@@ -6,12 +6,15 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Required"),
   password: Yup.string()
     .required("Required")
-    .oneOf(["rishiME@199"], "Password must be 'rishiME@199'"),
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
 });
 
 const LoginForm = () => {
   return (
-    <div className="flex justify-center items-center h-screen bg-sky-100">
+    <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="w-full max-w-xs">
         <h1 className="text-2xl text-center mb-6 font-bold">Login Form</h1>
         <Formik
@@ -23,7 +26,7 @@ const LoginForm = () => {
           }}
         >
           {({ isValid, dirty }) => (
-            <Form className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4">
+            <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
               <div className="mb-4">
                 <label
                   htmlFor="email"
