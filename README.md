@@ -2,7 +2,7 @@
 
 This is a ReactJS form built using Formik and Yup. It includes:
 - Email validation (valid email format).
-- Password validation (password must be "rishiME@199").
+- Password validation (password must contain 1 uppercase 1 lowercase 1 special character 1 number and 8 characters).
 - Disabled submit button until all fields are valid.
 - Error messages displayed within the input fields.
 
